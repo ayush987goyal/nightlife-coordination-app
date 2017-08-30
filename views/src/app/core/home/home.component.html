@@ -1,0 +1,23 @@
+<div class="container">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-10">
+          <input type="text" class="form-control" placeholder="Where you at?" name="term" id="term" ngModel required>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Search</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="container">
+    <div *ngIf="isLoading">
+      <i class="fa fa-spinner fa-pulse fa-3x fa-fw inner"></i>
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="row jumbotron" *ngFor="let bar of listOfBars">
+      <img [src]="bar.image_url" alt="" style="height: 140px; width: 140px"> {{bar.name}}
+    </div>
+  </div>
+</div>

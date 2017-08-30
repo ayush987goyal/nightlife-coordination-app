@@ -12,7 +12,8 @@
     "http": "0.0.0",
     "mongodb": "^2.2.31",
     "path": "^0.12.7",
-    "request-ip": "^2.0.2"
+    "request-ip": "^2.0.2",
+    "yelp-fusion": "^1.0.3"
   },
   "engines": {
     "node": "8.x"
