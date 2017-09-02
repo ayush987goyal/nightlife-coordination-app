@@ -1,14 +1,6 @@
 <div class="container">
-    <div class="row">   
-        <div class="col-md-10 header ">
-            Nighlife Coordinator
-        </div>
-        <div class="col-md-2" *ngIf="!isValid">
-            <a routerLink="/login">Login</a>    
-        </div>
-        <div class="col-md-2" *ngIf="isValid">
-                <a (click)="onSignOut()">Logout</a>    
-        </div>    
-    </div>
-    <router-outlet></router-outlet>   
+  <div class="inner header" [routerLink]="['/']" style="cursor: pointer; outline: none">
+    Nighlife Coordinator
+  </div>
+  <router-outlet></router-outlet>
 </div>

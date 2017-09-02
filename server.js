@@ -32,6 +32,30 @@ app.get('/bars/:location', (req, res) => {
     });
 })
 
+app.get('/usersLocation/:user(*)', (req, res) => {
+    myMongo.getUsersLocation(req.params.user, (err, data) => {
+        if(err) throw err;
+
+        res.send(data);
+    })
+})
+
+app.post('/usersLocation', (req, res) => {
+    myMongo.updateUsersLocation(req.body, (err, data) => {
+        if(err) throw err;
+
+        res.send(data);
+    })
+})
+
+app.get('/goingCount', (req, res) => {
+    myMongo.getBarsGoingCount((err, data) => {
+        if(err) throw err;
+
+        res.send(data);
+    })
+})
+
 app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'views/dist/index.html'));
 })
