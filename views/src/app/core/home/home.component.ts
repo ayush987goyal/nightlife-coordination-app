@@ -29,6 +29,19 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       (obj: any) => {
         this.isValid = obj.isValid;
         this.userEmail = obj.userEmail;
+
+        if (this.copyEmail.email && this.form.value.term) {
+          let obj = {
+            user: this.copyEmail.email,
+            location: this.form.value.term
+          }
+          console.log(obj);
+          this.mongoService.updateUsersLocation(obj).subscribe(
+            (res) => {
+              console.log(res);
+            }
+          );
+        }
       }
     );
     this.isValid = this.authService.isAuthenticated();
@@ -37,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.mongoService.getGoingCount().subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.goingCountList = res;
       }
     );
@@ -68,6 +81,29 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         this.isLoading = false;
       }
     );
+    this.mongoService.getGoingCount().subscribe(
+      (res) => {
+        // console.log(res);
+        this.goingCountList = res;
+      }
+    );
+  }
+
+  getTheGoingCount(id) {
+    let pos = this.goingCountList.map((e) => { return e.barId; }).indexOf(id);
+
+    if (pos >= 0) {
+      return {
+        goingCount: this.goingCountList[pos]['goingCount'],
+        goingUsers: this.goingCountList[pos]['goingUsers']
+      };
+    }
+    else {
+      return {
+        goingCount: 0,
+        goingUsers: []
+      };
+    }
   }
 
   onSignOut() {

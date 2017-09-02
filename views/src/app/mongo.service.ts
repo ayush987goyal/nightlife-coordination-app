@@ -33,4 +33,10 @@ export class MongoService {
     )
   }
 
+  updateGoingCount(goingData: any) {
+    return this.http.post(this.local + '/updateGoingCount', goingData).map(
+      (res) => { return res.json(); }
+    )
+  }
+
 }

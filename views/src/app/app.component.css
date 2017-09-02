@@ -1,5 +1,12 @@
 .container {
-    margin-top: 20px;
+  margin-top: 20px;
+  min-height: 100%;
+  margin-bottom: -30px;
+}
+
+.container:after {
+    content: "";
+    display: block;
 }
 
 .inner {
@@ -8,7 +15,12 @@
 }
 
 .header {
-    font-size: 55px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 50px;
+  font-size: 55px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 50px;
+}
+
+.footer, .container:after {
+  height: 30px;
+  text-align: center;
 }

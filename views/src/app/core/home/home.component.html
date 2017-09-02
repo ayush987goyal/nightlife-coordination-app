@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="form-group">
         <div class="row">
-          <div class="col-md-10">
+          <div class="col-md-9">
             <input type="text" class="form-control" placeholder="Where you at?" name="term" id="term" ngModel required>
           </div>
           <div class="col-md-1">
@@ -26,9 +26,9 @@
     </div>
     <div class="container">
       <div class="row container" *ngFor="let item of listOfBars | thriplets">
-          <div class="col-md-3" *ngFor="let barItem of item" style="margin: 10px;" >
-            <app-bar [bar]="barItem" *ngIf="barItem"></app-bar>
-          </div>
+        <div class="col-md-3" *ngFor="let barItem of item" style="margin: 10px;">
+          <app-bar [bar]="barItem" [goingData]="getTheGoingCount(barItem.id)" *ngIf="barItem"></app-bar>
+        </div>
       </div>
     </div>
   </div>

@@ -56,6 +56,14 @@ app.get('/goingCount', (req, res) => {
     })
 })
 
+app.post('/updateGoingCount', (req, res) => {
+    myMongo.updateBarsGoingCount(req.body, (err, data) => {
+        if(err) throw err;
+
+        res.send(data);
+    })
+})
+
 app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'views/dist/index.html'));
 })
